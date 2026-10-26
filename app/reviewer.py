@@ -2,10 +2,17 @@
 import httpx
 
 from app.schemas import ReviewResult
+import os
 
+OLLAMA_URL = os.getenv(
+    "OLLAMA_BASE_URL",
+    "http://127.0.0.1:11434",
+).rstrip("/")
 
-OLLAMA_URL = "http://127.0.0.1:11434"
-MODEL_NAME = "qwen2.5:7b"
+MODEL_NAME = os.getenv(
+    "OLLAMA_MODEL",
+    "qwen2.5:7b",
+)
 
 
 SYSTEM_PROMPT = """
